@@ -12,13 +12,15 @@ import Counter from './Counter';
 export default function CounterList({ defaultCounter }) {
   // array of unique ids for key values that will be mapped to each <li> <Counter/> </li>
   const [counters, setCounters] = React.useState([defaultCounter]);
-
   const [range, setRange] = React.useState(1);
+
+  const deleteAll = () => setCounters([]);
+
+  const resetAll = () =>
+    setCounters(counters.map((counter) => ({ ...counter, count: 0 })));
 
   const addCounter = () =>
     setCounters([...counters, { id: uuid(), count: 0, range }]);
-
-  const deleteAll = () => setCounters([]);
 
   const updateCounter = (id, newCount) =>
     setCounters(
@@ -56,11 +58,15 @@ export default function CounterList({ defaultCounter }) {
           <button className="btn-delete-all" onClick={deleteAll}>
             <FaTrash size={48} />
           </button>
-          <button className="btn-add" onClick={addCounter}>
+          <button
+            disabled={counters.length > 4}
+            className={`btn-add ${counters.length > 4 && 'not-allowed'}`}
+            onClick={addCounter}
+          >
             <TiPlusOutline size={64} />
           </button>
 
-          <button className="btn-delete-all" id="reset" onClick={() => {}}>
+          <button className="btn-delete-all" id="reset" onClick={resetAll}>
             <RiRestartLine size={48} />
           </button>
         </div>
