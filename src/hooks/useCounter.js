@@ -6,7 +6,7 @@ import { v4 as uuid } from 'uuid';
  */
 
 const useCounter = (defaultCounter) => {
-  // array of unique ids for key values that will be mapped to each <li> <Counter/> </li>
+  // array of counters represented as { id: uuid(), count: 0, range: 3 }
   const [counters, setCounters] = React.useState([defaultCounter]);
 
   const deleteAll = () => setCounters([]);
