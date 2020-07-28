@@ -19,8 +19,7 @@ export default function CounterList({ defaultCounter }) {
   const resetAll = () =>
     setCounters(counters.map((counter) => ({ ...counter, count: 0 })));
 
-  const addCounter = () =>
-    setCounters([...counters, { id: uuid(), count: 0, range }]);
+  const addCounter = () => setCounters([...counters, { id: uuid(), count: 0 }]);
 
   const updateCounter = (id, newCount) =>
     setCounters(
@@ -79,7 +78,7 @@ export default function CounterList({ defaultCounter }) {
               count={counter.count}
               deleteCounter={deleteCounter}
               updateCounter={updateCounter}
-              range={counter.range}
+              range={range}
             />
           </li>
         ))}
@@ -89,5 +88,5 @@ export default function CounterList({ defaultCounter }) {
 }
 
 CounterList.defaultProps = {
-  defaultCounter: { id: uuid(), count: 0, range: 1 },
+  defaultCounter: { id: uuid(), count: 0 },
 };
