@@ -12,7 +12,7 @@ import Counter from './Counter';
 export default function CounterList({ defaultCounter }) {
   // array of unique ids for key values that will be mapped to each <li> <Counter/> </li>
   const [counters, setCounters] = React.useState([defaultCounter]);
-  const [range, setRange] = React.useState(1);
+  const [range, setRange] = React.useState(3);
 
   const deleteAll = () => setCounters([]);
 
