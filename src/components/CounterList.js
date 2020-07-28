@@ -33,6 +33,13 @@ export default function CounterList({ defaultCounter }) {
       )
     );
 
+  const resetCounter = (id) =>
+    setCounters(
+      counters.map((counter) =>
+        counter.id === id ? { ...counter, count: 0 } : counter
+      )
+    );
+
   const deleteCounter = (id) =>
     setCounters(counters.filter((counter) => counter.id !== id));
 
@@ -54,15 +61,16 @@ export default function CounterList({ defaultCounter }) {
           </p>
         </div>
         <div>
-          <button className="btn-delete-all" onClick={deleteAll}>
-            <FaTrash size={48} />
-          </button>
           <button
             disabled={counters.length > 4}
             className={`btn-add ${counters.length > 4 && 'not-allowed'}`}
             onClick={addCounter}
           >
             <TiPlusOutline size={64} />
+          </button>
+
+          <button className="btn-delete-all" onClick={deleteAll}>
+            <FaTrash size={48} />
           </button>
 
           <button className="btn-delete-all" id="reset" onClick={resetAll}>
@@ -78,6 +86,7 @@ export default function CounterList({ defaultCounter }) {
               count={counter.count}
               deleteCounter={deleteCounter}
               updateCounter={updateCounter}
+              resetCounter={resetCounter}
               range={range}
             />
           </li>
