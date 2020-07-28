@@ -1,4 +1,4 @@
-# DEMO: https://app.netlify.com/sites/stupefied-wescoff-a68a06/overview
+# DEMO: https://stupefied-wescoff-a68a06.netlify.app/
 
 ## Available Scripts
 
